@@ -1,4 +1,4 @@
-package jp.te4a.spring.boot.myapp11;
+package jp.te4a.spring.boot.myapp12;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.constraints.Min;
@@ -7,30 +7,15 @@ import javax.validation.constraints.Size;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-public class BookValidator implements ConstraintValidator<BookValid,String>{
+public class WritterValidator implements ConstraintValidator<Writter,String>{
 	String param;
 	@Override
-	public void initialize(BookValid nv){ param =  nv.param(); }
+	public void initialize(Writter nv){ param =  nv.ok(); }
 	@Override
 	public boolean isValid(String in,ConstraintValidatorContext cxt){
-		if(in == null){
+		if(in != null){
 			return false;
 		}
 		System.out.println(in.equals(param));
 		return !in.equals(param);
 }}
-
-/*@Data
-@NoArgsConstructor
-public class BookForm {
-private Integer id ;
-@NotNull
-@Size(min = 3)
-@BookValid(param = "abc")
-private String title;
-@Size(min = 3, max = 20)
-private String writter;
-private String publisher;
-@Min(0)
-private Integer price;
-}*/
