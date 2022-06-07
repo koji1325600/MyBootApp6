@@ -13,9 +13,10 @@ public class WritterValidator implements ConstraintValidator<Writter,String>{
 	public void initialize(Writter nv){ param =  nv.ok(); }
 	@Override
 	public boolean isValid(String in,ConstraintValidatorContext cxt){
-		if(in != null){
+		if(in == null){
 			return false;
 		}
 		System.out.println(in.equals(param));
-		return !in.equals(param);
+		return in.equals(param);
+
 }}
